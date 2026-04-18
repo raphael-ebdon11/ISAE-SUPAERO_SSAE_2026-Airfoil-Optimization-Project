@@ -1,14 +1,5 @@
-# XFOIL worker scratch files
-airfoil_*.dat
-input_airfoil_*.dat.txt
-polar_*.txt
-worker_log_*.txt
-
-# Keep the finals
-!final_optimized_airfoil.dat
-!final_polar.txt
-!hires_polar.txt
-!verify_polar.txt
+# Optimizer scratch outputs
+runs/
 
 # Python
 __pycache__/
