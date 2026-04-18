@@ -91,8 +91,9 @@ def run_xfoil(dat_filename="airfoil.dat", polar_filename="polar.txt", n_panels=2
             os.remove(polar_filename)
         except OSError:
             pass
-
-    input_file = f"input_{dat_filename}.txt"
+    
+    dat_dir = os.path.dirname(dat_filename) or "."
+    input_file = os.path.join(dat_dir, f"input_{os.path.basename(dat_filename)}.txt")
     with open(input_file, 'w') as f:
         f.write("PLOP\nG F\n\n")
         f.write(f"LOAD {dat_filename}\n")
@@ -123,7 +124,7 @@ def run_xfoil(dat_filename="airfoil.dat", polar_filename="polar.txt", n_panels=2
 #----------------------------------------------------------------------
 def evaluate_fitness(polar_filename="polar.txt"):
     pid = os.getpid()
-    log_file = f"worker_log_{pid}.txt"
+    log_file = os.path.join("runs", f"worker_log_{pid}.txt")
 
     if not os.path.exists(polar_filename):
         return -100000.0
@@ -235,10 +236,10 @@ def objective_function(weights):
     pid = os.getpid()
     uid = uuid.uuid4().hex[:8]
 
-    dat_file = f"airfoil_{uid}.dat"
-    pol_file = f"polar_{uid}.txt"
-    inp_file = f"input_{dat_file}.txt"
-    log_file = f"worker_log_{pid}.txt"
+    dat_file = os.path.join("runs", f"airfoil_{uid}.dat")
+    pol_file = os.path.join("runs", f"polar_{uid}.txt")
+    inp_file = os.path.join("runs", f"input_airfoil_{uid}.dat.txt")
+    log_file = os.path.join("runs", f"worker_log_{pid}.txt")
 
     upper_w = weights[:7]
     lower_w = weights[7:14]
@@ -273,7 +274,12 @@ def objective_function(weights):
 # 6. File Cleanup Function
 #----------------------------------------------------------------------
 def cleanup_temp_files():
-    patterns = ["airfoil_*.dat", "input_airfoil_*.dat.txt", "polar_*.txt", "worker_log_*.txt"]
+    patterns = [
+        "runs/airfoil_*.dat",
+        "runs/input_airfoil_*.dat.txt",
+        "runs/polar_*.txt",
+        "runs/worker_log_*.txt",
+    ]
     for pattern in patterns:
         for filepath in glob.glob(pattern):
             try:
@@ -328,6 +334,10 @@ def build_seed_from_dat(filename="seed_airfoil.dat"):
 #----------------------------------------------------------------------
 if __name__ == "__main__":
     multiprocessing.freeze_support()
+
+    # Directory for per-worker scratch files (ignored by git)
+    RUNS_DIR = "runs"
+    os.makedirs(RUNS_DIR, exist_ok=True)
 
     cleanup_temp_files()
 
