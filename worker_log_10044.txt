@@ -1,7 +1,0 @@
-LEARNING: Cl_max=0.65 | Cm08=-0.0321 | Cd02=0.0135 | Cd08=0.0498 | Score=-102533.4
-LEARNING: Cl_max=0.64 | Cm08=-0.0303 | Cd02=0.0143 | Cd08=0.0469 | Score=-105005.5
-LEARNING: Cl_max=0.59 | Cm08=-0.0244 | Cd02=0.0151 | Cd08=0.0459 | Score=-126783.7
-LEARNING: Cl_max=0.63 | Cm08=-0.0419 | Cd02=0.0130 | Cd08=0.0457 | Score=-119620.7
-REJECTED (early stall, only 12 points before Cl_max)
-LEARNING: Cl_max=0.77 | Cm08=0.0166 | Cd02=0.0200 | Cd08=0.0289 | Score=-19150.0
-REJECTED (early stall, only 19 points before Cl_max)
