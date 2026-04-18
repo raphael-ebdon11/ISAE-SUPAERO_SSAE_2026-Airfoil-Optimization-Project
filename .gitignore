@@ -1,0 +1,18 @@
+# XFOIL worker scratch files
+airfoil_*.dat
+input_airfoil_*.dat.txt
+
+# But keep the final result
+!final_optimized_airfoil.dat
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
