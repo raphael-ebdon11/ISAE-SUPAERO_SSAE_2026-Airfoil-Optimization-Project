@@ -1,0 +1,22 @@
+LOAD airfoil_68117f5a.dat
+PPAR
+N 200
+
+
+PANE
+
+
+OPER
+TYPE 2
+VISC 50000
+ITER 240
+VPAR
+N 12.0
+
+ALFA 0
+PACC
+polar_68117f5a.txt
+
+ASEQ 0 12 0.2
+
+QUIT

@@ -1,0 +1,22 @@
+LOAD airfoil_f6201a28.dat
+PPAR
+N 200
+
+
+PANE
+
+
+OPER
+TYPE 2
+VISC 50000
+ITER 240
+VPAR
+N 12.0
+
+ALFA 0
+PACC
+polar_f6201a28.txt
+
+ASEQ 0 12 0.2
+
+QUIT

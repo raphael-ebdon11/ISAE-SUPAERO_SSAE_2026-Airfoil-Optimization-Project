@@ -1,0 +1,25 @@
+PLOP
+G F
+
+LOAD final_optimized_airfoil.dat
+PPAR
+N 200
+
+
+PANE
+
+
+OPER
+TYPE 2
+VISC 50000
+ITER 300
+VPAR
+N 12.0
+
+ALFA 0
+PACC
+hires_polar.txt
+
+ASEQ 0 14 0.2
+
+QUIT
